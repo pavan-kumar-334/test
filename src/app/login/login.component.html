@@ -1,0 +1,85 @@
+<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div
+      *ngIf="
+        loginForm.get('email').invalid &&
+        (loginForm.get('email').dirty || loginForm.get('email').touched)
+      "
+    >
+      <div *ngIf="loginForm.get('email').errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="loginForm.get('email').errors?.['email']">
+        Invalid email format.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password" />
+    <div
+      *ngIf="
+        loginForm.get('password').invalid &&
+        (loginForm.get('password').dirty || loginForm.get('password').touched)
+      "
+    >
+      <div *ngIf="loginForm.get('password').errors?.['required']">
+        Password is required.
+      </div>
+      <div *ngIf="loginForm.get('password').errors?.['minlength']">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+
+
+
+
+
+ -->
+<mat-card>
+  <mat-card-title><h2>LogIn</h2></mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-label>Username :</mat-label>
+        <mat-form-field appearance="fill">
+          <input
+            type="text"
+            matInput
+            placeholder="Username"
+            formControlName="username"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-label>password :</mat-label>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" class="buttonStyle">
+          <span class="text"> <span style="font-weight: 600">LogIn</span></span>
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
