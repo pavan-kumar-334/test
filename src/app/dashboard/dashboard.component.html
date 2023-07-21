@@ -1,8 +1,46 @@
 <div class="button">
-  <button type="button" class="buttonStyle" (click)="logOut()">
-    <span style="font-weight: 600">LogOut</span>
+  <button
+    class="ms-2"
+    type="button"
+    mat-raised-button
+    style="
+      box-sizing: content-box;
+      float: right;
+      margin-top: 10px;
+      margin-right: 20px;
+      color: rgb(159, 239, 239);
+    "
+    (click)="logOut()"
+  >
+    LogOut<mat-icon>logout</mat-icon>
   </button>
 </div>
+<div style="display: flex; justify-content: space-between">
+  <h1
+    style="
+      margin-top: 20px;
+      margin-left: 20px;
+      font-size: 30px;
+      font-weight: 500;
+    "
+  >
+    Departments
+  </h1>
+  <button
+    mat-raised-button
+    color="green"
+    style="
+      margin-top: 20px;
+      margin-right: 20px;
+      margin-bottom: 30px;
+      background-color: rgb(191, 216, 153);
+    "
+    routerLink="/Home/add/"
+  >
+    <mat-icon>add</mat-icon>Add Role
+  </button>
+</div>
+
 <div>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="id">
@@ -24,7 +62,7 @@
         mat-sort-header
         sortActionDescription="Sort by name"
       >
-        Name
+        Role
       </th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
@@ -41,13 +79,62 @@
       <td mat-cell *matCellDef="let element">{{ element.status }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef style="text-align: left">
+        Actions
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="d-flex">
+          <a
+            mat-icon-button
+            routerLink="/Home/Edit/{{ element.id }}/{{ element.name }}"
+            class="table-action-btn"
+            color="primary"
+            title="Edit Contact"
+          >
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a
+            mat-icon-button
+            class="table-action-btn"
+            (click)="deleteCompany(element.id)"
+            title="Delete Contact"
+            color="error"
+          >
+            <mat-icon>delete</mat-icon>
+          </a>
+        </div>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
-  <button type="button" class="buttonStyle" (click)="fileDownload()">
-    <span style="font-weight: 600">Download CSV</span>
+  <mat-paginator
+    style="
+      background-color: rgb(248, 223, 191);
+      color: black;
+      font-size: 15px;
+      font-weight: 400;
+    "
+    [pageSizeOptions]="[2, 4, 6, 8]"
+    showFirstLastButtons
+  ></mat-paginator>
+  <button
+    mat-raised-button
+    color="green"
+    style="
+      float: left;
+      margin-top: 40px;
+      margin-left: 20px;
+      margin-bottom: 30px;
+      background-color: rgb(192, 235, 247);
+    "
+    (click)="fileDownload()"
+  >
+    <mat-icon>file_download</mat-icon>Download CSV
   </button>
+
   <br /><br /><br /><br />
-  <input type="file" (change)="readExcel($event)" />
+  <!-- <input type="file" (change)="readExcel($event)" /> -->
 </div>

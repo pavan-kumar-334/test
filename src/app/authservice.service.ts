@@ -6,29 +6,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthserviceService {
+  url = 'http://65.0.155.254:5001/';
+
   constructor(private http: HttpClient) {}
 
   login(data): Observable<any> {
-    return this.http.post('http://65.0.155.254:5001/test/auth/login', data);
+    return this.http.post(`${this.url}test/auth/login`, data);
   }
 
   importData(importData): Observable<any> {
-    return this.http.post(
-      'http://65.0.155.254:5001/admin/department/import',
-      importData
-    );
-  }
-
-  isLoggedIn() {
-    const x = localStorage.getItem('token') != null;
-
-    return x;
-  }
-  getToken() {
-    return localStorage.getItem('token') || '';
+    return this.http.post(`${this.url}admin/department/import`, importData);
   }
 
   getListData() {
-    return this.http.get(`http://65.0.155.254:5001/admin/department/list`);
+    return this.http.get(`${this.url}admin/department/list`);
+  }
+
+  addData(formData): Observable<any> {
+    return this.http.post(`${this.url}admin/department/add`, formData);
+  }
+
+  updateData(updatedId): Observable<any> {
+    return this.http.post(`${this.url}admin/department/update`, updatedId);
+  }
+
+  isLoggedIn() {
+    return localStorage.getItem('token') != null;
+  }
+
+  getToken() {
+    return localStorage.getItem('token') || '';
   }
 }

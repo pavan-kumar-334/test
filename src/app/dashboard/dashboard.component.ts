@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import * as XLSX from 'xlsx';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +16,12 @@ export class DashboardComponent implements OnInit {
   dataSource: any;
   excelData: any;
   csvData: any;
+  //paginator:any;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private route: Router, private authService: AuthserviceService) {}
 
-  displayedColumns: string[] = ['id', 'name', 'status'];
+  displayedColumns: string[] = ['id', 'name', 'status', 'Actions'];
 
   ngOnInit(): void {
     this.LoadCustomer();
@@ -31,12 +34,10 @@ export class DashboardComponent implements OnInit {
   }
 
   LoadCustomer() {
-    // this.service.LoadCustomer().subscribe(data=>{
-    //   this.customerdata=data;
-    // });
     this.authService.getListData().subscribe((data) => {
       this.listData = data['data']['rows'];
       this.dataSource = new MatTableDataSource(this.listData);
+      this.dataSource.paginator = this.paginator;
 
       //console.log('ooooooooooooooooooo', this.listData);
     });
@@ -74,4 +75,6 @@ export class DashboardComponent implements OnInit {
       });
     };
   }
+
+  deleteCompany(id: any) {}
 }

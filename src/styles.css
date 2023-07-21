@@ -1,4 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(240, 247, 254);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: rgb(228, 245, 247) !important;
+  border: 2px solid black;
+  width: 130%;
+}
+.mat-mdc-cell {
+  background-color: rgb(236, 236, 180) !important;
+  color: rgb(8, 7, 7);
+  font-weight: 500;
+  font-size: 15px;
+}
+.mat-mdc-header-cell {
+  background-color: rgb(134, 130, 130) !important;
+  font-weight: 500;
+  font-size: 18px;
+}
+.mat-mdc-card {
+  background-color: rgb(240, 216, 216) !important;
+}
+.mat-mdc-select-value-text {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+}
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
+  .mdc-list-item__primary-text {
+  color: rgb(255, 255, 249) !important;
+}
+.mat-mdc-paginator-icon {
+  background-color: burlywood;
+}
+
+.ng-tns-c3393473648-1 {
+  color: black !important;
+}
+
+.mat-mdc-option {
+  background-color: rgb(244, 200, 143) !important;
+}

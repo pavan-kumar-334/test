@@ -41,8 +41,4 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
 }

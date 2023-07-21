@@ -1,0 +1,73 @@
+<div
+  class="flex-container"
+  style="
+    background-color: rgb(243, 239, 219);
+    padding: 1rem !important;
+    margin-top: 100px;
+    height: 280px;
+  "
+>
+  <form (ngSubmit)="onSubmit()" [formGroup]="superForms">
+    <div>
+      <button
+        class="clr"
+        type="button"
+        value="colourchange"
+        mat-raised-button
+        style="
+          box-sizing: content-box;
+          float: right;
+          margin-left: 30px;
+          margin-right: 30px;
+          background-color: rgb(248, 97, 97);
+        "
+        (click)="close()"
+      >
+        <mat-icon>clear</mat-icon>Cancel
+      </button>
+      <button
+        class="ms-2"
+        type="submit"
+        mat-raised-button
+        style="
+          box-sizing: content-box;
+          float: right;
+          background-color: rgb(188, 242, 107);
+          color: black;
+        "
+      >
+        <mat-icon>check</mat-icon>Save
+      </button>
+
+      <div class="mb-8">
+        <mat-form-field
+          *ngIf="objId != null"
+          style="margin-top: 80px; margin-left: 50px; margin-right: 30px"
+        >
+          <mat-label style="color: black">Id</mat-label>
+          <input
+            type="text"
+            style="color: black; font-weight: 400; font-size: 20px"
+            placeholder="Id"
+            matInput
+            [disabled]
+            formControlName="dId"
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          style="margin-top: 80px; margin-left: 50px; padding-top: 70px"
+        >
+          <mat-label style="color: black">Enter Role Name</mat-label>
+          <input
+            type="text"
+            style="color: black; font-weight: 400; font-size: 20px"
+            placeholder="Role Name"
+            matInput
+            formControlName="name"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,66 +1,37 @@
-<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" formControlName="email" />
-    <div
-      *ngIf="
-        loginForm.get('email').invalid &&
-        (loginForm.get('email').dirty || loginForm.get('email').touched)
-      "
-    >
-      <div *ngIf="loginForm.get('email').errors?.['required']">
-        Email is required.
-      </div>
-      <div *ngIf="loginForm.get('email').errors?.['email']">
-        Invalid email format.
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" formControlName="password" />
-    <div
-      *ngIf="
-        loginForm.get('password').invalid &&
-        (loginForm.get('password').dirty || loginForm.get('password').touched)
-      "
-    >
-      <div *ngIf="loginForm.get('password').errors?.['required']">
-        Password is required.
-      </div>
-      <div *ngIf="loginForm.get('password').errors?.['minlength']">
-        Password must be at least 6 characters long.
-      </div>
-    </div>
-  </div>
-
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
-
-
-
-
-
- -->
-<mat-card>
-  <mat-card-title><h2>LogIn</h2></mat-card-title>
+<mat-card
+  style="
+    border: 1px solid salmon;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+  "
+>
+  <mat-card-title style="padding-top: 35px; padding-left: 15px"
+    ><h2 style="color: brown; font-size: 30px">
+      <mat-icon style="font-size: 30px">person</mat-icon>&nbsp;LOGIN
+    </h2></mat-card-title
+  >
   <mat-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <p>
-        <mat-label>Username :</mat-label>
-        <mat-form-field appearance="fill">
-          <input
-            type="text"
-            matInput
-            placeholder="Username"
-            formControlName="username"
-          />
-        </mat-form-field>
-      </p>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      style="margin-top: 50px"
+    >
+      <mat-label style="font-size: 15px; font-weight: 500"
+        >Username :
+      </mat-label>
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          matInput
+          placeholder="Username"
+          formControlName="username"
+          style="font-size: 15px; font-weight: 400"
+        />
+      </mat-form-field>
 
       <p>
-        <mat-label>password :</mat-label>
+        <mat-label style="font-size: 15px; font-weight: 500"
+          >Password :
+        </mat-label>
         <mat-form-field>
           <input
             type="password"
@@ -71,13 +42,27 @@
         </mat-form-field>
       </p>
 
-      <p *ngIf="error" class="error">
-        {{ error }}
-      </p>
-
       <div class="button">
-        <button type="submit" class="buttonStyle">
+        <!-- <button type="submit" class="buttonStyle">
           <span class="text"> <span style="font-weight: 600">LogIn</span></span>
+        </button> -->
+
+        <button
+          type="submit"
+          mat-raised-button
+          style="
+            box-sizing: content-box;
+            float: right;
+            margin-left: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 5px;
+            font-size: 15px;
+            padding-bottom: 5px;
+            background-color: rgb(248, 97, 97);
+          "
+        >
+          <mat-icon>login</mat-icon>LogIn
         </button>
       </div>
     </form>
